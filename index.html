@@ -335,7 +335,7 @@
         /* ============== PROCESS SECTION ============== */
         .process {
             padding: 6rem 2rem;
-            background: rgba(15, 20, 25, 0.6);
+            background: linear-gradient(180deg, #1a1f2e 0%, #0f1419 100%);
             position: relative;
         }
 
@@ -411,10 +411,100 @@
             line-height: 1.8;
         }
 
+        /* ============== PORTFOLIO SECTION ============== */
+        .portfolio {
+            padding: 6rem 2rem;
+            background: linear-gradient(180deg, #0f1419 0%, #1a1f2e 100%);
+            position: relative;
+        }
+
+        .portfolio-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+
+        .portfolio-item {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            opacity: 0;
+            animation: fadeInSlideUp 0.8s ease-out forwards;
+        }
+
+        .portfolio-item:hover {
+            transform: translateY(-10px);
+            border-color: var(--accent-color);
+            box-shadow: 0 15px 30px rgba(0, 217, 255, 0.15);
+            background: rgba(0, 217, 255, 0.05);
+        }
+
+        .portfolio-item.in-view {
+            animation: fadeInSlideUp 0.8s ease-out forwards;
+        }
+
+        .portfolio-item:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+
+        .portfolio-item:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .portfolio-item:nth-child(3) {
+            animation-delay: 0.3s;
+        }
+
+        .portfolio-image {
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .placeholder-1 {
+            background: linear-gradient(135deg, #1a2a6c, #112e42, #0b101e);
+        }
+
+        .placeholder-2 {
+            background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+        }
+
+        .placeholder-3 {
+            background: linear-gradient(135deg, #141e30, #243b55);
+        }
+
+        .portfolio-content {
+            padding: 2rem;
+        }
+
+        .portfolio-content h3 {
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .portfolio-content p {
+            color: #b0b5c0;
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
         /* ============== CONTACT SECTION ============== */
         .contact {
             padding: 6rem 2rem;
-            background: linear-gradient(135deg, #0f1419 0%, #1a1f2e 100%);
+            background: linear-gradient(135deg, #1a1f2e 0%, #0f1419 100%);
             position: relative;
         }
 
@@ -691,6 +781,7 @@
                 <ul class="nav-links" id="navLinks">
                     <li><a href="#services" data-i18n="nav-services">Services</a></li>
                     <li><a href="#process" data-i18n="nav-process">Process</a></li>
+                    <li><a href="#portfolio" data-i18n="nav-portfolio">Portfolio</a></li>
                     <li><a href="#contact" data-i18n="nav-contact">Contact</a></li>
                 </ul>
                 <div class="language-switcher">
@@ -842,6 +933,50 @@
         </div>
     </section>
 
+    <!-- Portfolio Section -->
+    <section class="portfolio" id="portfolio">
+        <div class="portfolio-container">
+            <h2 class="section-title" data-i18n="portfolio-title">Featured Projects</h2>
+            <p class="section-subtitle" data-i18n="portfolio-subtitle">Explore some of our recent reverse engineering
+                success stories</p>
+
+            <div class="portfolio-grid">
+                <div class="portfolio-item">
+                    <div class="portfolio-image placeholder-1">
+                        ⚙️
+                    </div>
+                    <div class="portfolio-content">
+                        <h3 data-i18n="port1-title">Industrial Gear Restoration</h3>
+                        <p data-i18n="port1-desc">Scanned a broken obsolete gear, reconstructed the missing teeth in
+                            CAD, and prepared manufacturing drawings for CNC machining.</p>
+                    </div>
+                </div>
+
+                <div class="portfolio-item">
+                    <div class="portfolio-image placeholder-2">
+                        🏎️
+                    </div>
+                    <div class="portfolio-content">
+                        <h3 data-i18n="port2-title">Automotive Intake Manifold</h3>
+                        <p data-i18n="port2-desc">Full 3D scan of a custom intake manifold to create a parameterized CAD
+                            model for computational fluid dynamics (CFD) analysis.</p>
+                    </div>
+                </div>
+
+                <div class="portfolio-item">
+                    <div class="portfolio-image placeholder-3">
+                        🏭
+                    </div>
+                    <div class="portfolio-content">
+                        <h3 data-i18n="port3-title">Legacy Pump Housing</h3>
+                        <p data-i18n="port3-desc">Reverse engineered a 50-year-old cast pump housing with no existing
+                            documentation to produce a new casting mold pattern.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Contact Section -->
     <section class="contact" id="contact">
         <div class="contact-container">
@@ -891,6 +1026,7 @@
             ru: {
                 'nav-services': 'Услуги',
                 'nav-process': 'Процесс',
+                'nav-portfolio': 'Портфолио',
                 'nav-contact': 'Контакт',
                 'hero-title': 'Лаборатория реверс-инжиниринга SKB',
                 'hero-subtitle': 'Преобразуйте механические детали в точные CAD модели используя передовую технологию 3D сканирования и профессиональную обработку данных',
@@ -911,6 +1047,14 @@
                 'step2-desc': 'Наши эксперты анализируют и обрабатывают необработанные данные сканирования с использованием профессионального программного обеспечения. Мы улучшаем данные, удаляем шум и подготавливаем их для преобразования в CAD.',
                 'step3-title': 'Создание CAD модели',
                 'step3-desc': 'Мы создаем точную, редактируемую CAD модель из проанализированных данных сканирования. Финальная модель готова к производству, копированию или дальнейшим модификациям.',
+                'portfolio-title': 'Примеры работ',
+                'portfolio-subtitle': 'Изучите некоторые из наших недавних успешных проектов по обратному инжинирингу',
+                'port1-title': 'Восстановление промышленной шестерни',
+                'port1-desc': 'Отсканировали сломанную устаревшую шестерню, реконструировали отсутствующие зубья в CAD и подготовили производственные чертежи для обработки на станке с ЧПУ.',
+                'port2-title': 'Автомобильный впускной коллектор',
+                'port2-desc': 'Полное 3D-сканирование кастомного впускного коллектора для создания параметризованной CAD модели под вычислительную гидродинамику (CFD).',
+                'port3-title': 'Корпус старого насоса',
+                'port3-desc': 'Провели реверс-инжиниринг 50-летнего литого корпуса насоса без документации для производства новой литейной формы.',
                 'contact-title': 'Начало работы',
                 'contact-subtitle': 'Отправьте нам подробности вашего проекта и мы предоставим расценки',
                 'form-name': 'Полное имя',
@@ -924,6 +1068,7 @@
             en: {
                 'nav-services': 'Services',
                 'nav-process': 'Process',
+                'nav-portfolio': 'Portfolio',
                 'nav-contact': 'Contact',
                 'hero-title': 'SKB Reverse Engineering Laboratory',
                 'hero-subtitle': 'Transform your mechanical parts into precision CAD models using cutting-edge 3D scanning technology and expert data processing',
@@ -944,6 +1089,14 @@
                 'step2-desc': 'Our experts analyze and process the raw scan data using professional analysis software. We refine the data, remove noise, and prepare it for CAD conversion.',
                 'step3-title': 'Create CAD Model',
                 'step3-desc': 'We generate a precise, editable CAD model from the analyzed data. The final model is ready for manufacturing, replication, or further modifications.',
+                'portfolio-title': 'Featured Projects',
+                'portfolio-subtitle': 'Explore some of our recent reverse engineering success stories',
+                'port1-title': 'Industrial Gear Restoration',
+                'port1-desc': 'Scanned a broken obsolete gear, reconstructed the missing teeth in CAD, and prepared manufacturing drawings for CNC machining.',
+                'port2-title': 'Automotive Intake Manifold',
+                'port2-desc': 'Full 3D scan of a custom intake manifold to create a parameterized CAD model for computational fluid dynamics (CFD) analysis.',
+                'port3-title': 'Legacy Pump Housing',
+                'port3-desc': 'Reverse engineered a 50-year-old cast pump housing with no existing documentation to produce a new casting mold pattern.',
                 'contact-title': 'Get Started',
                 'contact-subtitle': 'Send us your project details and we\'ll provide a quote',
                 'form-name': 'Full Name',
@@ -1059,7 +1212,7 @@
             setLanguage(currentLanguage);
             updateFooterSignature(currentLanguage);
 
-            document.querySelectorAll('.service-card, .step, .contact-form').forEach(el => {
+            document.querySelectorAll('.service-card, .step, .contact-form, .portfolio-item').forEach(el => {
                 observer.observe(el);
             });
 
